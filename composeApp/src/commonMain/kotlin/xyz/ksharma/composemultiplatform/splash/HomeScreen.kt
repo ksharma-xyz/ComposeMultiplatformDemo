@@ -1,5 +1,6 @@
 package xyz.ksharma.composemultiplatform.splash
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.systemBarsPadding
@@ -21,28 +22,26 @@ fun HomeScreen(
         modifier = modifier.fillMaxSize().systemBarsPadding(),
         contentAlignment = Alignment.Center,
     ) {
-        val splashComplete by rememberUpdatedState(onClick)
-        Text("Home Screen")
-
-        LaunchedEffect(key1 = Unit) {
-            delay(1200)
-            splashComplete()
-        }
+        Text("Home Screen", modifier = Modifier.clickable {
+            onClick()
+        })
     }
 }
 
 
-
 @Composable
 fun DetailScreen(
-    onClick: () -> Unit,
+    onBackClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Box(
         modifier = modifier.fillMaxSize().systemBarsPadding(),
         contentAlignment = Alignment.Center,
     ) {
-        val splashComplete by rememberUpdatedState(onClick)
+        Text("Go back", modifier = Modifier.clickable {
+            onBackClick()
+        })
+
         Text("Detail Screen")
     }
 }

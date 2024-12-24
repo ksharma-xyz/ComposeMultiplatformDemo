@@ -35,7 +35,7 @@ fun ComposeNavHost(modifier: Modifier = Modifier) {
 
         composable<DetailRoute> {
             DetailScreen(
-                onClick = { navController.popBackStack() },
+                onBackClick = { navController.popBackStack() },
             )
         }
     }
